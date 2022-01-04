@@ -1,0 +1,35 @@
+stages:          # List of stages for jobs, and their order of execution
+  - build
+  - deploy
+
+build-job:       # This job runs in the build stage, which runs first.
+  #image: node:alpine
+  stage: build
+  tags:
+    - angularci
+  script:
+    - echo "Compiling the code..."
+    - npm i
+    - npm run build
+    - echo "Compile complete."
+  artifacts:
+    expire_in: 1 hour
+    paths:
+      - dist
+  only: 
+    - master
+
+deploy-job:      # This job runs in the deploy stage.
+  stage: deploy  # It only runs when *both* jobs in the test stage complete successfully.
+  tags:
+    - angularci
+  script:
+    - echo "Deploying application..."
+    - chmod +x deploy.sh
+    - bash deploy.sh
+    #- pwd
+    #- sudo rm -rf /usr/share/nginx/html/*
+    #- sudo cp -rv dist/angular-ci/* /usr/share/nginx/html
+    - echo "Application successfully deployed."
+  only: 
+    - master
