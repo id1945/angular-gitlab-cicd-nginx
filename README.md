@@ -41,33 +41,33 @@ deploy-job:      # This job runs in the deploy stage.
     - master
 ```
 
-### ⌛ Download the binary for your system
+### ⌛ [1] Download the binary for your system
 ```bash
 sudo curl -L --output /usr/local/bin/gitlab-runner https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-linux-amd64
 ```
 
-### ⌛ Give it permissions to execute
+### ⌛ [2] Give it permissions to execute
 ```bash
 sudo chmod +x /usr/local/bin/gitlab-runner
 ```
 
-### ⌛ Create a GitLab CI user
+### ⌛ [3] Create a GitLab CI user
 ```bash
 sudo useradd --comment 'GitLab Runner' --create-home gitlab-runner --shell /bin/bash
 ```
 
-### ⌛ Install and run as service
+### ⌛ [4] Install and run as service
 ```bash
 sudo gitlab-runner install --user=gitlab-runner --working-directory=/home/gitlab-runner
 sudo gitlab-runner start
 ```
 
-### ⌛ Command to register runner
+### ⌛ [5] Command to register runner
 ```bash
 sudo gitlab-runner register --url https://gitlab.com/ --registration-token $REGISTRATION_TOKEN
 ```
 
-### ⌛ Preparing the "shell" executor
+### ⌛ [6] Preparing the "shell" executor
 ```bash
 sudo gitlab-runner run
 ```
