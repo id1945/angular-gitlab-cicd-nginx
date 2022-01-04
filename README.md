@@ -1,6 +1,7 @@
 # ஜ۩ Install a runner - Linux ۩ஜ
 
 ![Logo](https://raw.githubusercontent.com/id1945/angular-gitlab-cicd-nginx/master/runner-token.png)
+![Logo](https://raw.githubusercontent.com/id1945/angular-gitlab-cicd-nginx/master/pieline.png)
 
 ### .gitlab-ci.yml
 
